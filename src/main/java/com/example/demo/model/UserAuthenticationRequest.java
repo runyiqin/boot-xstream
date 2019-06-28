@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.demo.xs.coverters.DateConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
 import com.thoughtworks.xstream.annotations.XStreamConverter;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
@@ -14,6 +15,8 @@ import com.thoughtworks.xstream.annotations.XStreamImplicit;
 @XStreamAlias("user")
 public class UserAuthenticationRequest {
  	
+	//@XStreamAsAttribute这个注解是将username当作是user的属性输出在根节点上
+	@XStreamAsAttribute
 	@XStreamAlias("UserName")
 	private String username;
 	
@@ -23,6 +26,7 @@ public class UserAuthenticationRequest {
 	@XStreamConverter(DateConverter.class)
 	private Date birthday;
 	
+	//@XStreamImplicit除去了logs节点的显示，只显示userlog节点元素
 	@XStreamImplicit()
 	private List<UserLog> logs;
 

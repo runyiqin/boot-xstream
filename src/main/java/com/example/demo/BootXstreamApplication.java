@@ -24,6 +24,11 @@ public class BootXstreamApplication {
 		userLog.setCreateUser("cshi");
 		userlogList.add(userLog);
 		
+		UserLog userLog1 = new UserLog();
+		userLog1.setCreateDate(new Date());
+		userLog1.setCreateUser("cshi123");
+		userlogList.add(userLog1);
+		
 		userRequest.setLogs(userlogList);
 			
 		String xmlString = XsteamUtil.toXml(UserAuthenticationRequest.class,userRequest);
