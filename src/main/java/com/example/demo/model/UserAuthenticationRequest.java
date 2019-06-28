@@ -1,7 +1,13 @@
 package com.example.demo.model;
 
+import java.util.Date;
+import java.util.List;
+
+import com.example.demo.xs.coverters.DateConverter;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamAsAttribute;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
+import com.thoughtworks.xstream.annotations.XStreamImplicit;
 
 /**
  * 发单工具用户验证请求
@@ -15,6 +21,12 @@ public class UserAuthenticationRequest {
 	
 	@XStreamAlias("Password")
 	private String password;
+	
+	@XStreamConverter(DateConverter.class)
+	private Date birthday;
+	
+	@XStreamImplicit()
+	private List<UserLog> logs;
 
 	public String getUsername() {
 		return username;
@@ -30,6 +42,24 @@ public class UserAuthenticationRequest {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+
+	public List<UserLog> getLogs() {
+		return logs;
+	}
+
+	public void setLogs(List<UserLog> logs) {
+		this.logs = logs;
 	}
 
 	public UserAuthenticationRequest(String username, String password) {
